@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIBORA | Rescate de Alimentos Universitarios</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --naranja: #F47920;
+            --naranja-oscuro: #B8520E;
+            --crema: #FFF8E7;
+            --azul-oscuro: #0D2B33;
+            --blanco: #FFFFFF;
+            --gris-texto: #4A5568;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--azul-oscuro);
+            background-color: var(--blanco);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, .logo-text {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Navegación */
+        header {
+            background-color: var(--blanco);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .brand img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .logo-text span:first-child { color: var(--azul-oscuro); }
+        .logo-text span:last-child { color: var(--naranja-oscuro); }
+
+        nav a {
+            margin-left: 2rem;
+            text-decoration: none;
+            color: var(--azul-oscuro);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--naranja);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--crema) 0%, #FFE8C2 100%);
+            padding: 5rem 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .hero-content {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+        }
+
+        .badge {
+            background-color: var(--naranja);
+            color: var(--blanco);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            line-height: 1.15;
+            margin-bottom: 1.2rem;
+            color: var(--azul-oscuro);
+        }
+
+        .hero h1 span {
+            color: var(--naranja);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--gris-texto);
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            background-color: var(--naranja);
+            color: var(--blanco);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: transform 0.2s, background-color 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--naranja-oscuro);
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            flex: 1;
+            min-width: 280px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-logo-card {
+            background: var(--blanco);
+            padding: 2.5rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(13, 43, 51, 0.1);
+            text-align: center;
+            max-width: 340px;
+        }
+
+        .hero-logo-card img {
+            width: 180px;
+            height: 180px;
+            margin-bottom: 1rem;
+        }
+
+        /* Cómo funciona */
+        .section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.4rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gris-texto);
+            max-width: 600px;
+            margin: 0 auto 3.5rem auto;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--blanco);
+            border: 1px solid #EDF2F7;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-num {
+            background: var(--crema);
+            color: var(--naranja);
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+        }
+
+        /* Misión y Visión */
+        .mv-section {
+            background-color: var(--azul-oscuro);
+            color: var(--blanco);
+            padding: 5rem 5%;
+        }
+
+        .mv-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .mv-box {
+            background: rgba(255, 255, 255, 0.06);
+            padding: 2.5rem;
+            border-radius: 24px;
+            border-left: 5px solid var(--naranja);
+        }
+
+        .mv-box h3 {
+            color: var(--crema);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Valores */
+        .pill-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .pill {
+            background: var(--crema);
+            color: var(--azul-oscuro);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            border: 1px solid #FBD38D;
+        }
+
+        /* Registro / Contacto */
+        .cta-box {
+            background: linear-gradient(135deg, var(--naranja) 0%, var(--naranja-oscuro) 100%);
+            color: var(--blanco);
+            padding: 4rem 2rem;
+            border-radius: 30px;
+            text-align: center;
+            margin: 4rem auto;
+            max-width: 1000px;
+        }
+
+        .cta-box h2 {
+            font-size: 2.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .form-group input {
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            border: none;
+            width: 300px;
+            font-size: 1rem;
+        }
+
+        .btn-dark {
+            background-color: var(--azul-oscuro);
+            color: var(--blanco);
+        }
+
+        .btn-dark:hover {
+            background-color: #07191E;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--gris-texto);
+            font-size: 0.9rem;
+            border-top: 1px solid #EDF2F7;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.4rem; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="brand">
+            <!-- Cambia 'logo.png' por el nombre de tu imagen del logotipo -->
+            <img src="logo.png" alt="Logo CIBORA" onerror="this.style.display='none'">
+            <div class="logo-text"><span>CIB</span><span>ORA</span></div>
+        </a>
+        <nav>
+            <a href="#como-funciona">¿Cómo funciona?</a>
+            <a href="#nosotros">Misión y Visión</a>
+            <a href="#unete">Únete</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <span class="badge">🌱 Cero desperdicio en tu campus</span>
+            <h1>Rescata comida deliciosa de tu <span>universidad</span>.</h1>
+            <p>Conectamos los comedores universitarios con estudiantes para evitar el desperdicio de alimentos diarios en óptimas condiciones. Ahorra dinero y ayuda al planeta.</p>
+            <a href="#unete" class="btn">Quiero acceso anticipado</a>
+        </div>
+        <div class="hero-image">
+            <div class="hero-logo-card">
+                <!-- Cambia 'logo.png' por el nombre exacto de tu imagen -->
+                <img src="logo.png" alt="Logotipo CIBORA" onerror="this.src='https://via.placeholder.com/180/F47920/FFF8E7?text=CIBORA'">
+                <h3>CIBORA App</h3>
+                <p style="font-size: 0.9rem; color: #4A5568;">Rescate de alimentos universitarios</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="como-funciona" class="section">
+        <h2 class="section-title">¿Cómo funciona CIBORA?</h2>
+        <p class="section-subtitle">En tres pasos sencillos transformamos los excedentes del comedor en comida accesible para la comunidad estudiantil.</p>
+        
+        <div class="grid-3">
+            <div class="card">
+                <div class="step-num">1</div>
+                <h3>El comedor publica</h3>
+                <p>Al finalizar el horario de servicio, las cafeterías registran los platillos excedentes en perfecto estado dentro de la app.</p>
+            </div>
+            <div class="card">
+                <div class="step-num">2</div>
+                <h3>Tú reservas</h3>
+                <p>Recibes una notificación en tiempo real, eliges tu paquete de comida desde tu celular y lo apartas en segundos.</p>
+            </div>
+            <div class="card">
+                <div class="step-num">3</div>
+                <h3>Recoges y disfrutas</h3>
+                <p>Pasas al comedor en la ventana de entrega establecida, muestras tu código y disfrutas sin desperdiciar ni un gramo.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="nosotros" class="mv-section">
+        <div class="mv-container">
+            <div class="mv-box">
+                <h3>Nuestra Misión</h3>
+                <p>Conectar a los comedores universitarios con la comunidad estudiantil mediante una plataforma digital accesible e intuitiva, rescatando los excedentes de alimentos diarios en óptimas condiciones para reducir el desperdicio alimentario, apoyar la economía de los estudiantes y fomentar una cultura de consumo responsable dentro de los campus.</p>
+            </div>
+            <div class="mv-box">
+                <h3>Nuestra Visión</h3>
+                <p>Consolidarnos como la aplicación líder en gestión y rescate de alimentos universitarios, logrando campus sustentables con cero desperdicio de comida, donde cada excedente se transforme en bienestar estudiantil e impacto ambiental positivo.</p>
+            </div>
+        </div>
+
+        <div style="max-width: 1200px; margin: 3rem auto 0 auto; text-align: center;">
+            <h3 style="color: var(--crema);">Nuestros Valores</h3>
+            <div class="pill-grid">
+                <div class="pill">♻️ Sustentabilidad</div>
+                <div class="pill">🎓 Accesibilidad Estudiantil</div>
+                <div class="pill">🤝 Comunidad Universitaria</div>
+                <div class="pill">💡 Innovación Social</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="unete" class="section">
+        <div class="cta-box">
+            <h2>¿Listo para llevar CIBORA a tu campus?</h2>
+            <p>Déjanos tu correo institucional para avisarte en cuanto lancemos la versión beta o si deseas sumar tu comedor universitario.</p>
+            <form class="form-group" onsubmit="event.preventDefault(); alert('¡Gracias por registrarte en CIBORA! Pronto nos pondremos en contacto.'); this.reset();">
+                <input type="email" placeholder="tu.correo@universidad.edu.mx" required>
+                <button type="submit" class="btn btn-dark">Registrarme</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 CIBORA — Rescate de Alimentos Universitarios. Proyecto Universitario.</p>
+    </footer>
+
+</body>
+</html>
